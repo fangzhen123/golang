@@ -4,11 +4,15 @@ import (
 	"math/rand"
 	"time"
 	"fmt"
+	"os"
+	"strconv"
 )
 
 //测试I/O密集型计算的性能
 
-const NUM = 10000000
+//const NUM = 10000000
+
+
 
 func swap(a int, b int) (int, int) {
 	return b, a
@@ -45,18 +49,23 @@ func randArr(aris []int, len int) {
 }
 
 func main() {
-	//intas := []int{}
-	var intas [NUM]int
+	arg := "100000"
+
+	if len(os.Args) == 2 {
+		arg = os.Args[1]
+	}
+	NUM,error := strconv.Atoi(arg)
+	if error != nil{
+		fmt.Println(" error")
+	}
+	var intas []int
 	for i := 0; i < NUM; i++ {
-		intas[i] = rand.Intn(100000)
+		intas = append(intas,rand.Intn(100000))
 	}
 	fmt.Println("BEGIN SORT")
 	beginTime := time.Now()
-	qsort(intas[:], 0, NUM)
-	//fmt.Println(intas)
+	qsort(intas, 0, NUM)
 	endTime := time.Now()
-
 	fmt.Println("END SORT")
 	fmt.Println(endTime.Sub(beginTime))
-	//fmt.Println(111)
 }
