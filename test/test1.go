@@ -41,16 +41,8 @@ func qsort(aris []int, begin int, end int) {
 	}
 }
 
-func randArr(aris []int, len int) {
-	for i := 0; i < len; i++ {
-		r := rand.New(rand.NewSource(time.Now().UnixNano()))
-		aris[i] = r.Intn(1000)
-	}
-}
-
 func main() {
 	arg := "100000"
-
 	if len(os.Args) == 2 {
 		arg = os.Args[1]
 	}
