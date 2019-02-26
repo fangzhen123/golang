@@ -12,9 +12,9 @@ func main() {
 }
 
 func handle(w http.ResponseWriter, r *http.Request) {
-	var arr [10000]int
+	var arr [10]int
 	count := 0
-	for i:=0;i<10000 ;i++  {
+	for i:=0;i<10 ;i++  {
 		arr[i] = 1
 	}
 	for _,v := range arr {
