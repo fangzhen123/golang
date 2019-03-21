@@ -8,23 +8,28 @@
 package routers
 
 import (
-	"golang/api/controllers"
-
 	"github.com/astaxie/beego"
+	"golang/api/controllers"
 )
 
 func init() {
-	ns := beego.NewNamespace("/v1",
-		beego.NSNamespace("/object",
-			beego.NSInclude(
-				&controllers.ObjectController{},
-			),
-		),
-		beego.NSNamespace("/user",
-			beego.NSInclude(
-				&controllers.UserController{},
-			),
-		),
-	)
-	beego.AddNamespace(ns)
+	//ns := beego.NewNamespace("/v1",
+	//	beego.NSNamespace("/object",
+	//		beego.NSInclude(
+	//			&controllers.ObjectController{},
+	//		),
+	//	),
+	//	beego.NSNamespace("/user",
+	//		beego.NSInclude(
+	//			&controllers.UserController{},
+	//		),
+	//	),
+	//)
+	//ns := beego.NewNamespace("/v1",
+	//
+	//	)
+	//beego.AddNamespace(ns)
+
+	beego.Router("/api/user/:uid", &controllers.UserController{})
+	beego.Router("/api/user", &controllers.UserController{}, "*:GetAll")
 }
